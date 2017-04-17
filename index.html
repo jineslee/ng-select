@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='selectApp'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ui-select</title>
+    <link rel="stylesheet" href="assets/index.css">
+    <link rel="stylesheet" href="node_modules/ui-select/dist/select.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/ui-select/dist/select.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller='selectController'>
+    <div class="main">
+        <div class='container' ng-app="app.select">
+            <ui-select ng-model="selectAsync.selected" theme="select2" ng-disabled="ctrl.disabled" style="min-width: 210px;" title="">
+                <ui-select-match placeholder="">{{$select.selected.value || $select.selected}}</ui-select-match>
+                <ui-select-choices repeat=" person in selectList | propsFilter: { value: $select.search}">
+                    <div>{{person.value}}</div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+</body>
+
+</html>
